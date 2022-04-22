@@ -23,6 +23,7 @@ module ManageIQ::Providers::CiscoIntersight
       physical_racks
       firmware_firmware_summaries
       network_elements
+      network_element_summary
       physical_chassis
     end
 
@@ -51,6 +52,10 @@ module ManageIQ::Providers::CiscoIntersight
 
     def network_elements
       @network_elements ||= network_api.get_network_element_list.results
+    end
+
+    def network_element_summary
+      @network_element_summary ||= network_api.get_network_element_summary_list.results
     end
 
     def device_contract_informations_by_moid
